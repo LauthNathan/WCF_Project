@@ -1,0 +1,9 @@
+C:\Users\Vimaire\source\repos\WCF_Project\WCF_Middleware\bin\Debug\WCF_Middleware.dll
+C:\Users\Vimaire\source\repos\WCF_Project\WCF_Middleware\bin\Debug\WCF_Middleware.pdb
+C:\Users\Vimaire\source\repos\WCF_Project\WCF_Middleware\bin\Debug\WCF_Service.dll
+C:\Users\Vimaire\source\repos\WCF_Project\WCF_Middleware\bin\Debug\WCF_Service.pdb
+C:\Users\Vimaire\source\repos\WCF_Project\WCF_Middleware\obj\Debug\WCF_Middleware.csprojAssemblyReference.cache
+C:\Users\Vimaire\source\repos\WCF_Project\WCF_Middleware\obj\Debug\WCF_Middleware.csproj.CoreCompileInputs.cache
+C:\Users\Vimaire\source\repos\WCF_Project\WCF_Middleware\obj\Debug\WCF_Middleware.csproj.CopyComplete
+C:\Users\Vimaire\source\repos\WCF_Project\WCF_Middleware\obj\Debug\WCF_Middleware.dll
+C:\Users\Vimaire\source\repos\WCF_Project\WCF_Middleware\obj\Debug\WCF_Middleware.pdb
