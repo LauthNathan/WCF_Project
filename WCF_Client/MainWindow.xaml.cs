@@ -9,6 +9,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Media.Media3D;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
@@ -19,6 +20,14 @@ namespace WCF_Client {
     public partial class MainWindow : Window {
         public MainWindow() {
             InitializeComponent();
+
+            var svc = new proxy.ComposantServiceClient();
+            svc.ClientCredentials.Windows.ClientCredential.Domain = "WORKGROUP";
+            svc.ClientCredentials.Windows.ClientCredential.UserName = "project";
+            svc.ClientCredentials.Windows.ClientCredential.Password = "azerty";
+            Console.WriteLine(svc.m_service(new proxy.MSG() { appVersion = "Coucou toi" }));
+            Console.Read();
+
         }
     }
 }

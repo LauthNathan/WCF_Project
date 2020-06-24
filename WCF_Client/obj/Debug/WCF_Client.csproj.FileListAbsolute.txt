@@ -1,0 +1,15 @@
+C:\Users\Vimaire\source\repos\WCF_Project\WCF_Client\bin\Debug\WCF_Client.exe
+C:\Users\Vimaire\source\repos\WCF_Project\WCF_Client\bin\Debug\WCF_Client.pdb
+C:\Users\Vimaire\source\repos\WCF_Project\WCF_Client\obj\Debug\WCF_Client.csprojAssemblyReference.cache
+C:\Users\Vimaire\source\repos\WCF_Project\WCF_Client\obj\Debug\MainWindow.g.cs
+C:\Users\Vimaire\source\repos\WCF_Project\WCF_Client\obj\Debug\App.g.cs
+C:\Users\Vimaire\source\repos\WCF_Project\WCF_Client\obj\Debug\WCF_Client_MarkupCompile.cache
+C:\Users\Vimaire\source\repos\WCF_Project\WCF_Client\obj\Debug\WCF_Client_MarkupCompile.lref
+C:\Users\Vimaire\source\repos\WCF_Project\WCF_Client\obj\Debug\MainWindow.baml
+C:\Users\Vimaire\source\repos\WCF_Project\WCF_Client\obj\Debug\WCF_Client.g.resources
+C:\Users\Vimaire\source\repos\WCF_Project\WCF_Client\obj\Debug\WCF_Client.Properties.Resources.resources
+C:\Users\Vimaire\source\repos\WCF_Project\WCF_Client\obj\Debug\WCF_Client.csproj.GenerateResource.cache
+C:\Users\Vimaire\source\repos\WCF_Project\WCF_Client\obj\Debug\WCF_Client.csproj.CoreCompileInputs.cache
+C:\Users\Vimaire\source\repos\WCF_Project\WCF_Client\obj\Debug\WCF_Client.exe
+C:\Users\Vimaire\source\repos\WCF_Project\WCF_Client\obj\Debug\WCF_Client.pdb
+C:\Users\Vimaire\source\repos\WCF_Project\WCF_Client\bin\Debug\WCF_Client.exe.config
