@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="686148dd-ca78-449f-b13a-b1b29e0f67d5" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="net.tcp://localhost:2011/serverWCF" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="project-exia.fr.wsdl" MetadataType="Wsdl" ID="b9806f35-4f43-4102-8bdb-b6ee7b16e44f" SourceId="1" SourceUrl="net.tcp://localhost:2011/serverWCF" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="44620ad2-6020-4732-8bcb-53054860ff24" SourceId="1" SourceUrl="net.tcp://localhost:2011/serverWCF" />
+    <MetadataFile FileName="project-exia.fr.xsd" MetadataType="Schema" ID="c0afc771-d1a5-4bb2-8188-b389c7db64d3" SourceId="1" SourceUrl="net.tcp://localhost:2011/serverWCF" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="bd9c82bd-e750-40fc-bdbc-3f1dbd3c0107" SourceId="1" SourceUrl="net.tcp://localhost:2011/serverWCF" />
+    <MetadataFile FileName="WCF_Service.xsd" MetadataType="Schema" ID="e10a1372-d42e-4991-86dc-fd410a22275e" SourceId="1" SourceUrl="net.tcp://localhost:2011/serverWCF" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="10a0abc6-5baa-463e-9bae-ed2cabf24de6" SourceId="1" SourceUrl="net.tcp://localhost:2011/serverWCF" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
