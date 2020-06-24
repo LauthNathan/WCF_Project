@@ -1,6 +1,5 @@
 C:\Users\Vimaire\source\repos\WCF_Project\WCF_Service\bin\Debug\WCF_Service.dll
 C:\Users\Vimaire\source\repos\WCF_Project\WCF_Service\bin\Debug\WCF_Service.pdb
-C:\Users\Vimaire\source\repos\WCF_Project\WCF_Service\obj\Debug\WCF_Service.csprojAssemblyReference.cache
 C:\Users\Vimaire\source\repos\WCF_Project\WCF_Service\obj\Debug\WCF_Service.csproj.CoreCompileInputs.cache
 C:\Users\Vimaire\source\repos\WCF_Project\WCF_Service\obj\Debug\WCF_Service.dll
 C:\Users\Vimaire\source\repos\WCF_Project\WCF_Service\obj\Debug\WCF_Service.pdb
