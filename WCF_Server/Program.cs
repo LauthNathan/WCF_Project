@@ -18,6 +18,7 @@ namespace WCF_Server
 
             selfHost.Open();
             Console.WriteLine("Server launched");
+            DataAccess dA = new DataAccess();
             Console.ReadLine();
 
         }
