@@ -15,6 +15,8 @@ namespace WCF_Middleware
         public MSG m_service(MSG message)
         {
             System.ServiceModel.ServiceSecurityContext csx = System.ServiceModel.OperationContext.Current.ServiceSecurityContext;
+            Console.WriteLine("Message" + message.appVersion);
+          
             return new MSG() { tokenApp = "Comm reussie" };
         }
     }

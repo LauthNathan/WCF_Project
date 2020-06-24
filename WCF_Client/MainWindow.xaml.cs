@@ -25,8 +25,8 @@ namespace WCF_Client {
             svc.ClientCredentials.Windows.ClientCredential.Domain = "WORKGROUP";
             svc.ClientCredentials.Windows.ClientCredential.UserName = "project";
             svc.ClientCredentials.Windows.ClientCredential.Password = "azerty";
-            Console.WriteLine(svc.m_service(new proxy.MSG() { appVersion = "Coucou toi" }));
-            Console.Read();
+            svc.m_service(new proxy.MSG() { appVersion = "Coucou toi" });
+            
 
         }
     }
