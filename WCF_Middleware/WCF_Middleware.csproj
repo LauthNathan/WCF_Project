@@ -41,9 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authentifier.cs" />
+    <Compile Include="DataAccess.cs" />
     <Compile Include="DecryptService.cs" />
     <Compile Include="SVR.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WCF_Service\WCF_Service.csproj">
