@@ -18,8 +18,13 @@ using System.IO;
 using iText.Kernel.Pdf;
 using iText.Kernel.Pdf.Canvas.Parser;
 using iText.Kernel.Pdf.Canvas.Parser.Listener;
+using System.Data;
+using System.Collections.ObjectModel;
+using System.Runtime.Serialization;
+
 
 namespace WCF_Client {
+
     /// <summary>
     /// Logique d'interaction pour Decrypter.xaml
     /// </summary>
@@ -31,23 +36,24 @@ namespace WCF_Client {
         private void button_Click(object sender, RoutedEventArgs e) {
             OpenFileDialog fileDialog = new OpenFileDialog {
                 Multiselect = true,
-                DefaultExt = ".pdf",
-                Filter = "PDF File (.pdf)|*.pdf"
+                DefaultExt = ".txt",
+                Filter = "TXT File (.txt)|*.txt"
             };
             if (fileDialog.ShowDialog() == true) {
-                Stream a = fileDialog.OpenFile();
-                StringBuilder txt = new StringBuilder();
-                Parallel.ForEach(fileDialog.FileNames, file => {
-                    string content = "";
-                    PdfReader pdfReader = new PdfReader(file);
-                    PdfDocument pdfDocument = new PdfDocument(pdfReader);
-                    for (int p = 1; p <= pdfDocument.GetNumberOfPages(); p++) {
-                        content += PdfTextExtractor.GetTextFromPage(pdfDocument.GetPage(p), new SimpleTextExtractionStrategy());
-                    }
-                    pdfDocument.Close();
-                    pdfReader.Close();
-                    File.WriteAllText("D:\\dev\\Projet\\pdf.txt", content);
-                });
+                Task.Factory.StartNew(() => {
+                    var svc = new proxy.ComposantServiceClient();
+                    Stream a = fileDialog.OpenFile();
+                    StringBuilder txt = new StringBuilder();
+                    Parallel.ForEach(fileDialog.FileNames, file => {
+                        string content = File.ReadAllText(file);
+                        proxy.InputData data = new proxy.InputData() { fileName = file, fileContent = content };
+                        proxy.InputData[] datas = new proxy.InputData[1];
+                        datas[0] = data;
+                        svc.m_service(new proxy.MSG() { operationName = "Decrypt", info = content, data = datas });
+                    });
+                }).ContinueWith(_ => {
+                    button.Content = "🚀";
+                }, TaskScheduler.FromCurrentSynchronizationContext());
             }
         }
     }

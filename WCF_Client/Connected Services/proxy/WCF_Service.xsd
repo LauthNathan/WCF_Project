@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WCF_Service" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WCF_Service" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:complexType name="MSG">
     <xs:annotation>
@@ -10,7 +9,7 @@
     </xs:annotation>
     <xs:sequence>
       <xs:element minOccurs="0" name="appVersion" nillable="true" type="xs:string" />
-      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="data" nillable="true" type="q1:ArrayOfanyType" />
+      <xs:element minOccurs="0" name="data" nillable="true" type="tns:ArrayOfInputData" />
       <xs:element minOccurs="0" name="info" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="operationName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="operationVersion" nillable="true" type="xs:string" />
@@ -20,4 +19,17 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="MSG" nillable="true" type="tns:MSG" />
+  <xs:complexType name="ArrayOfInputData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="InputData" nillable="true" type="tns:InputData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfInputData" nillable="true" type="tns:ArrayOfInputData" />
+  <xs:complexType name="InputData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="fileContent" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="fileName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InputData" nillable="true" type="tns:InputData" />
 </xs:schema>
