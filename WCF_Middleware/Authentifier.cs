@@ -22,8 +22,8 @@ namespace WCF_Middleware {
         public string Rq_sql { get => rq_sql; set => rq_sql = value; }
         public SqlDataReader DataReader { get => dataReader; set => dataReader = value; }
 
-        public Authentifier() {
-            DataAccess = new DataAccess();
+        public Authentifier(DataAccess dA) {
+            DataAccess = dA;
         }
 
         public MSG authenticate(string username, string pswd) {

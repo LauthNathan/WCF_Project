@@ -12,6 +12,7 @@ namespace WCF_Middleware {
         private string username;
         private string pswd;
 
+
         public int Id { get => id; set => id = value; }
         public MSG Msg { get => msg; set => msg = value; }
         public string Username { get => username; set => username = value; }
