@@ -225,7 +225,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:4002/WCF_Server</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-500VV2V\Vimaire</Upn>
+          <Upn>CKR\clemckr</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
