@@ -12,9 +12,7 @@ namespace WCF_Middleware {
         public static string tokkenApp = "#A`ut8kNX7t.%L%#Ierr3sBYi}`S=bXRK5.iWo[Reu>^|Km9fW+K!C%{Q}O&xU,";
         public static MSG response = new MSG();
 
-        [System.Security.Permissions.PrincipalPermission(
-           System.Security.Permissions.SecurityAction.Demand,
-           Role = @"BUILTIN\Utilisateurs")]
+        
         public MSG m_service(MSG message) {
             Console.WriteLine("nath");
             response = message;

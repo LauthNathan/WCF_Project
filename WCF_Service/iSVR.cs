@@ -10,7 +10,7 @@ namespace WCF_Service {
 
     [ServiceContract(
         Name = "IComposantService",
-        Namespace = "http://localhost")]
+        Namespace = "http://192.168.1.19")]
     public interface iSVR {
 
         [OperationContract]

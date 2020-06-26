@@ -16,8 +16,7 @@ namespace WCF_Server
             ServiceHost selfHost = new ServiceHost(typeof(SVR));
             selfHost.Open();
             Console.WriteLine("Server launched");
-            FileRef.FileWebServiceClient fr = new FileRef.FileWebServiceClient();
-            Console.WriteLine(fr.printHello("bite"));
+            //Console.WriteLine(fr.printHello("grosse bite de noir"));
 
             Console.ReadLine();
 

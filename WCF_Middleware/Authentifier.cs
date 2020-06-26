@@ -38,12 +38,14 @@ namespace WCF_Middleware {
                 response = DataReader.GetString(0);
                 DataReader.Close();
                 cmd.Dispose();
+                DataAccess.Cnn.Close();
                 return response;
 
             } else {
                 Console.WriteLine("Wrong credentials");
                 DataReader.Close();
                 cmd.Dispose();
+                DataAccess.Cnn.Close();
                 return null;
             }
         }
