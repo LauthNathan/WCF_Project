@@ -7,21 +7,29 @@ using WCF_Service;
 
 namespace WCF_Middleware {
     class DecryptService {
-        public static MSG DecryptAction(MSG message) {
-            string content = message.info;
+        public static void DecryptAction(MSG message) {
             char[] alphabet = new char[26] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
-            GenKeys(alphabet, content, "", alphabet.Length, 4);
-            foreach (InputData d in message.data) {
-                string fn = d.fileName;
-                Console.WriteLine(fn);
+
+            int length = message.data.Length / 2;
+
+            for (int i = 0; i < length; i += 2) {
+                string name = message.data[i].ToString();
+                string content = message.data[i + 1].ToString();
+                GenKeys(alphabet, content, "", alphabet.Length, 4);
             }
-            return new MSG();
+
+            /*Parallel.For(0, message.data.Length, i => {
+                string name = message.data[0].ToString();
+                string content = message.data[1].ToString();
+                GenKeys(alphabet, content, "", alphabet.Length, 4);
+            });
+            return new MSG();*/
         }
 
         public static void GenKeys(char[] set, string content, string prefix, int n, int k) {
             if (k == 0) {
                 string r = Decrypt(content, prefix);
-                //Console.WriteLine(r);
+                Console.WriteLine(r);
                 return;
             }
             Parallel.For(0, n, i => {

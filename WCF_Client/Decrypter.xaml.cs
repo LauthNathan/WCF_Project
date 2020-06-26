@@ -24,13 +24,19 @@ using System.Runtime.Serialization;
 
 
 namespace WCF_Client {
+    public class UploadedFile {
+        public string name { get; set; }
+        public string status { get; set; }
+    }
 
     /// <summary>
     /// Logique d'interaction pour Decrypter.xaml
     /// </summary>
     public partial class Decrypter : Page {
+        public ObservableCollection<UploadedFile> items = new ObservableCollection<UploadedFile>();
         public Decrypter() {
             InitializeComponent();
+            listView.ItemsSource = items;
         }
 
         private void button_Click(object sender, RoutedEventArgs e) {
@@ -41,18 +47,36 @@ namespace WCF_Client {
             };
             if (fileDialog.ShowDialog() == true) {
                 Task.Factory.StartNew(() => {
+                    List<object> data = new List<object>();
                     var svc = new proxy.ComposantServiceClient();
                     Stream a = fileDialog.OpenFile();
                     StringBuilder txt = new StringBuilder();
-                    Parallel.ForEach(fileDialog.FileNames, file => {
+                    Parallel.For(0, fileDialog.FileNames.Length, i => {
+                        string file = fileDialog.FileNames[i];
+                        Console.WriteLine(file);
+                        Dispatcher.Invoke(new Action(() => {
+                            items.Add(new UploadedFile() { name = file, status = "Traitement" });
+                        }));
                         string content = File.ReadAllText(file);
-                        proxy.InputData data = new proxy.InputData() { fileName = file, fileContent = content };
-                        proxy.InputData[] datas = new proxy.InputData[1];
-                        datas[0] = data;
-                        svc.m_service(new proxy.MSG() { operationName = "Decrypt", info = content, data = datas });
+                        data.Add(file);
+                        data.Add(content);
                     });
-                }).ContinueWith(_ => {
-                    button.Content = "🚀";
+                    return svc.m_service(new proxy.MSG() {
+                        appVersion = "1.0",
+                        statut_Op = true,
+                        operationVersion = "1.0",
+                        tokenApp = "",
+                        tokenUser = "",
+                        operationName = "Decrypt",
+                        info = "[[fileName, fileContent]]",
+                        data = data.ToArray()
+                    });
+                }).ContinueWith(t => {
+                    Console.WriteLine(t.Result.info);
+                    for (int i = 0; i < items.Count; i++) {
+                        items[i].status = t.Result.info;
+                    }
+                    listView.Items.Refresh();
                 }, TaskScheduler.FromCurrentSynchronizationContext());
             }
         }

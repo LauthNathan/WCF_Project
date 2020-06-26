@@ -17,6 +17,7 @@ namespace WCF_Client.proxy {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="MSG", Namespace="http://schemas.datacontract.org/2004/07/WCF_Service")]
     [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(object[]))]
     public partial struct MSG : System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -26,7 +27,7 @@ namespace WCF_Client.proxy {
         private string appVersionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private WCF_Client.proxy.InputData[] dataField;
+        private object[] dataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string infoField;
@@ -69,7 +70,7 @@ namespace WCF_Client.proxy {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public WCF_Client.proxy.InputData[] data {
+        public object[] data {
             get {
                 return this.dataField;
             }
@@ -162,67 +163,6 @@ namespace WCF_Client.proxy {
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="InputData", Namespace="http://schemas.datacontract.org/2004/07/WCF_Service")]
-    [System.SerializableAttribute()]
-    public partial class InputData : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string fileContentField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string fileNameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string fileContent {
-            get {
-                return this.fileContentField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.fileContentField, value) != true)) {
-                    this.fileContentField = value;
-                    this.RaisePropertyChanged("fileContent");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string fileName {
-            get {
-                return this.fileNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.fileNameField, value) != true)) {
-                    this.fileNameField = value;
-                    this.RaisePropertyChanged("fileName");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));

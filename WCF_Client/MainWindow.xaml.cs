@@ -12,19 +12,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Media.Media3D;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.ServiceModel;
 
 namespace WCF_Client {
     /// <summary>
     /// Logique d'interaction pour MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
+        public static string tokkenApp = "#A`ut8kNX7t.%L%#Ierr3sBYi}`S=bXRK5.iWo[Reu>^|Km9fW+K!C%{Q}O&xU,";
+        public static string tokkenUser;
         public MainWindow() {
             InitializeComponent();
-
-            var svc = new proxy.ComposantServiceClient();
-            svc.m_service(new proxy.MSG() { appVersion = "Coucou toi" });
-            
-
+            MainFrame.Navigate(new Uri("Decrypter.xaml", UriKind.Relative));
         }
     }
 }

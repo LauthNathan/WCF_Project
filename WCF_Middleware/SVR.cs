@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using WCF_Service;
 
@@ -13,7 +14,13 @@ namespace WCF_Middleware {
         public MSG m_service(MSG message) {
             switch (message.operationName) {
                 case "Decrypt":
-                    return DecryptService.DecryptAction(message);
+                    Thread workerThread = new Thread(() => DecryptService.DecryptAction(message));
+                    workerThread.Start();
+                    //while (!workerThread.IsAlive);
+                    MSG res = message;
+                    res.statut_Op = true;
+                    res.info = "Started";
+                    return res;
                 case "Auth":
                     return Auth(message);
                 default:

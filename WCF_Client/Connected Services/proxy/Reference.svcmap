@@ -26,6 +26,7 @@
     <MetadataFile FileName="project-exia.fr.xsd" MetadataType="Schema" ID="c0afc771-d1a5-4bb2-8188-b389c7db64d3" SourceId="1" SourceUrl="net.tcp://localhost:2011/serverWCF" />
     <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="bd9c82bd-e750-40fc-bdbc-3f1dbd3c0107" SourceId="1" SourceUrl="net.tcp://localhost:2011/serverWCF" />
     <MetadataFile FileName="WCF_Service.xsd" MetadataType="Schema" ID="e10a1372-d42e-4991-86dc-fd410a22275e" SourceId="1" SourceUrl="net.tcp://localhost:2011/serverWCF" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="d18bafaa-aaf7-4808-ae60-ee9924db3aa1" SourceId="1" SourceUrl="net.tcp://localhost:2011/serverWCF" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

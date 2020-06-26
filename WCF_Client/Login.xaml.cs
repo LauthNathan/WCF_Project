@@ -42,8 +42,18 @@ namespace WCF_Client {
             svc.ClientCredentials.Windows.ClientCredential.Domain = "WORKGROUP";
             svc.ClientCredentials.Windows.ClientCredential.UserName = username;
             svc.ClientCredentials.Windows.ClientCredential.Password = password;
+
             try {
-                svc.m_service(new proxy.MSG() { appVersion = "Coucou toi" });
+                svc.m_service(new proxy.MSG() {
+                    appVersion = "1.0",
+                    info = "[username, password]",
+                    operationName = "Auth",
+                    operationVersion = "1.0",
+                    tokenApp = MainWindow.tokkenApp,
+                    statut_Op = true,
+                    tokenUser = "",
+                    data = new object[] { username, password }
+                });
                 isAuth = true;
             } catch (Exception exc) {
                 Console.WriteLine(exc.Message);
