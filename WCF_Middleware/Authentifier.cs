@@ -26,25 +26,25 @@ namespace WCF_Middleware {
             DataAccess = dA;
         }
 
-        public MSG authenticate(string username, string pswd) {
+        public string authenticate(string username, string pswd) {
             Rq_sql = "SELECT tokenUser FROM users WHERE username = '" + username + "' AND password = '" + pswd + "';";
             cmd = new SqlCommand(Rq_sql, DataAccess.Cnn);
             DataReader = cmd.ExecuteReader();
-            MSG response;
+            string response;
            
            if (DataReader.Read()) {
                 Console.WriteLine(DataReader.GetString(0));
-                
-                response = new MSG() { statut_Op = true , tokenUser = DataReader.GetString(0) };
+
+                response = DataReader.GetString(0);
                 DataReader.Close();
                 cmd.Dispose();
                 return response;
 
             } else {
-                Console.WriteLine("No rows found.");
+                Console.WriteLine("Wrong credentials");
                 DataReader.Close();
                 cmd.Dispose();
-                return new MSG { statut_Op = false, info = "Wrong credentials" };
+                return null;
             }
         }
     }

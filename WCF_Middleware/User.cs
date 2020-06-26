@@ -11,19 +11,21 @@ namespace WCF_Middleware {
         private MSG msg;
         private string username;
         private string pswd;
+        private Authentifier auth;
 
 
         public int Id { get => id; set => id = value; }
         public MSG Msg { get => msg; set => msg = value; }
         public string Username { get => username; set => username = value; }
         public string Pswd { get => pswd; set => pswd = value; }
+        public Authentifier Auth { get => auth; set => auth = value; }
 
-        public User() {
-
+        public User(Authentifier auth) {
+            
         }
 
-        public MSG login() {
-            return new MSG();
+        public MSG login(MSG message) {
+            return message;
         }
 
         public MSG logout() {

@@ -21,6 +21,8 @@ namespace WCF_Client {
     public partial class Login : Page {
         public Login() {
             InitializeComponent();
+            var svc = new proxy.ComposantServiceClient();
+            svc.m_service(new proxy.MSG() { appVersion = "Coucou toi" });
         }
 
         private void button_Click(object sender, RoutedEventArgs e) {
