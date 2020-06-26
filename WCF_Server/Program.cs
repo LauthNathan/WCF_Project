@@ -14,8 +14,6 @@ namespace WCF_Server
         {
             // Step 2: Create a ServiceHost instance.
             ServiceHost selfHost = new ServiceHost(typeof(SVR));
-
-
             selfHost.Open();
             Console.WriteLine("Server launched");
             Console.ReadLine();

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="iQy2ZBI86blGPMDEMUgzyz2qN4+xe+VSM8whZ0N6oP0=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="GfNP3GpdETzGVbefUeABWi6wiTOZVJ/P4btEPQMKEqI=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="FileWebServicePortBinding">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="FileWebServicePort" contract="FileRef.FileWebService" bindingType="basicHttpBinding" address="http://192.168.1.18:8080/reciver_war_exploded/file" bindingConfiguration="FileWebServicePortBinding">
+    <endpoint name="FileWebServicePort" contract="FileRef.FileWebService" bindingType="basicHttpBinding" address="http://192.168.1.18:8080/recive/file" bindingConfiguration="FileWebServicePortBinding">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://192.168.1.18:8080/reciver_war_exploded/file</serializedValue>
+          <serializedValue>http://192.168.1.18:8080/recive/file</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="686148dd-ca78-449f-b13a-b1b29e0f67d5" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="01d2f64e-0519-41b8-bdca-57b1eee29efe" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -18,14 +18,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="net.tcp://localhost:2011/serverWCF" Protocol="mex" SourceId="1" />
+    <MetadataSource Address="net.tcp://localhost:4002/WCF_Server/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="project-exia.fr.wsdl" MetadataType="Wsdl" ID="b9806f35-4f43-4102-8bdb-b6ee7b16e44f" SourceId="1" SourceUrl="net.tcp://localhost:2011/serverWCF" />
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="44620ad2-6020-4732-8bcb-53054860ff24" SourceId="1" SourceUrl="net.tcp://localhost:2011/serverWCF" />
-    <MetadataFile FileName="project-exia.fr.xsd" MetadataType="Schema" ID="c0afc771-d1a5-4bb2-8188-b389c7db64d3" SourceId="1" SourceUrl="net.tcp://localhost:2011/serverWCF" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="bd9c82bd-e750-40fc-bdbc-3f1dbd3c0107" SourceId="1" SourceUrl="net.tcp://localhost:2011/serverWCF" />
-    <MetadataFile FileName="WCF_Service.xsd" MetadataType="Schema" ID="e10a1372-d42e-4991-86dc-fd410a22275e" SourceId="1" SourceUrl="net.tcp://localhost:2011/serverWCF" />
+    <MetadataFile FileName="project-exia.fr.wsdl" MetadataType="Wsdl" ID="4bb55dc5-ba1c-463e-b7de-0522b5dca2ad" SourceId="1" SourceUrl="net.tcp://localhost:4002/WCF_Server/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="88d6a11f-48c5-4a07-b240-d0021ea62d85" SourceId="1" SourceUrl="net.tcp://localhost:4002/WCF_Server/mex" />
+    <MetadataFile FileName="project-exia.fr.xsd" MetadataType="Schema" ID="8e19d4cb-5cf5-4408-b84c-8b9a229c7063" SourceId="1" SourceUrl="net.tcp://localhost:4002/WCF_Server/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="36fdd59a-e190-4b5e-afca-3b3178daa93b" SourceId="1" SourceUrl="net.tcp://localhost:4002/WCF_Server/mex" />
+    <MetadataFile FileName="WCF_Service.xsd" MetadataType="Schema" ID="5d6b4b64-3466-4a0e-840a-5bf04475fd93" SourceId="1" SourceUrl="net.tcp://localhost:4002/WCF_Server/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -12,13 +12,13 @@ namespace WCF_Server.FileRef {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://ws.cesi.com/", ConfigurationName="FileRef.FileWebService")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://services.recive.cesi.com/", ConfigurationName="FileRef.FileWebService")]
     public interface FileWebService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://ws.cesi.com/FileWebService/printLongRequest", ReplyAction="http://ws.cesi.com/FileWebService/printLongResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://services.recive.cesi.com/FileWebService/printHelloRequest", ReplyAction="http://services.recive.cesi.com/FileWebService/printHelloResponse")]
         [System.ServiceModel.DataContractFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        string printLong();
+        string printHello(string arg0);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -48,8 +48,8 @@ namespace WCF_Server.FileRef {
                 base(binding, remoteAddress) {
         }
         
-        public string printLong() {
-            return base.Channel.printLong();
+        public string printHello(string arg0) {
+            return base.Channel.printHello(arg0);
         }
     }
 }
