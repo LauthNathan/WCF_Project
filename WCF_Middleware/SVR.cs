@@ -7,15 +7,17 @@ using System.Threading;
 using System.Threading.Tasks;
 using WCF_Service;
 
+
 namespace WCF_Middleware {
     public class SVR : iSVR {
         public static string tokkenApp = "#A`ut8kNX7t.%L%#Ierr3sBYi}`S=bXRK5.iWo[Reu>^|Km9fW+K!C%{Q}O&xU,";
         public static MSG response = new MSG();
 
+     
         public MSG m_service(MSG message) {
-
+            Console.WriteLine("Nathan dit " + message.appVersion) ;
             response = message;
-
+            Console.WriteLine(message.tokenApp);
             if (message.tokenApp != tokkenApp) {
                 response.statut_Op = false;
                 response.info = "Wrong app token";
@@ -25,7 +27,7 @@ namespace WCF_Middleware {
                 response.info = "Wrong client token";
                 return response;
             }
-
+            Console.WriteLine("là");
             switch (message.operationName) {
                 // DECRYPT
                 case "Decrypt":
@@ -38,7 +40,14 @@ namespace WCF_Middleware {
 
                 // AUTHENTICATION
                 case "Auth":
-                    return Auth(message);
+                    Console.WriteLine("ici");
+                    DataAccess dA = new DataAccess();
+                    Authentifier auth = new Authentifier(dA);
+                    User user = new User(auth);
+                    MSG mess = user.login(message);
+                    Console.WriteLine(mess.statut_Op);
+                    return mess;
+                   
 
                 // DEFAULT
                 default:

@@ -171,10 +171,10 @@ namespace WCF_Client.proxy {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://project-exia.fr", ConfigurationName="proxy.IComposantService")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://localhost", ConfigurationName="proxy.IComposantService")]
     public interface IComposantService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://project-exia.fr/IComposantService/m_service", ReplyAction="http://project-exia.fr/IComposantService/m_serviceResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://localhost/IComposantService/m_service", ReplyAction="http://localhost/IComposantService/m_serviceResponse")]
         WCF_Client.proxy.MSG m_service(WCF_Client.proxy.MSG message);
     }
     

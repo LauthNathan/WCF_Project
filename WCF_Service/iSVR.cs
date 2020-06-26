@@ -10,7 +10,7 @@ namespace WCF_Service {
 
     [ServiceContract(
         Name = "IComposantService",
-        Namespace = "http://project-exia.fr")]
+        Namespace = "http://localhost")]
     public interface iSVR {
 
         [OperationContract]

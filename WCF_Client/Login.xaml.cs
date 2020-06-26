@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WCF_Client.proxy;
 
 namespace WCF_Client {
     /// <summary>
@@ -21,8 +22,8 @@ namespace WCF_Client {
     public partial class Login : Page {
         public Login() {
             InitializeComponent();
-            var svc = new proxy.ComposantServiceClient();
-            svc.m_service(new proxy.MSG() { appVersion = "Coucou toi" });
+         
+            
         }
 
         private void button_Click(object sender, RoutedEventArgs e) {
@@ -30,38 +31,36 @@ namespace WCF_Client {
             button.Content = "Connexion...";
             string usr = username.Text;
             string pwd = password.Password;
-            Task<bool>.Factory.StartNew(() => Auth(usr, pwd))
+            Task.Factory.StartNew(() => Auth(usr, pwd))
             .ContinueWith(t => {
-                if (t.Result == true) this.NavigationService.Navigate(new Uri("Decrypter.xaml", UriKind.Relative));
+                if (t.Result.statut_Op == true) {
+                    MainWindow.tokenUser = t.Result.tokenUser;
+                    this.NavigationService.Navigate(new Uri("Decrypter.xaml", UriKind.Relative));
+                } else MessageBox.Show(t.Result.info);
                 button.Content = "SE CONNECTER";
                 button.IsEnabled = true;
             }, TaskScheduler.FromCurrentSynchronizationContext());
         }
-        public bool Auth(string username, string password) {
-            bool isAuth = false;
-
+        public MSG Auth(string username, string password) {
             var svc = new proxy.ComposantServiceClient();
-            svc.ClientCredentials.Windows.ClientCredential.Domain = "WORKGROUP";
-            svc.ClientCredentials.Windows.ClientCredential.UserName = username;
-            svc.ClientCredentials.Windows.ClientCredential.Password = password;
+            
 
             try {
-                svc.m_service(new proxy.MSG() {
+                return svc.m_service(new MSG() {
                     appVersion = "1.0",
                     info = "[username, password]",
                     operationName = "Auth",
                     operationVersion = "1.0",
-                    tokenApp = MainWindow.tokkenApp,
+                    tokenApp = MainWindow.tokenApp,
                     statut_Op = true,
-                    tokenUser = "",
+                    tokenUser = "not logged in",
                     data = new object[] { username, password }
                 });
-                isAuth = true;
             } catch (Exception exc) {
                 Console.WriteLine(exc.Message);
-                MessageBox.Show("Wrong login or password !");
+                MessageBox.Show("An error occured");
+                return new MSG();
             }
-            return isAuth;
         }
     }
 }

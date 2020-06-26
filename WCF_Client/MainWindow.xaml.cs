@@ -19,11 +19,11 @@ namespace WCF_Client {
     /// Logique d'interaction pour MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
-        public static string tokkenApp = "#A`ut8kNX7t.%L%#Ierr3sBYi}`S=bXRK5.iWo[Reu>^|Km9fW+K!C%{Q}O&xU,";
-        public static string tokkenUser;
+        public static string tokenApp = "#A`ut8kNX7t.%L%#Ierr3sBYi}`S=bXRK5.iWo[Reu>^|Km9fW+K!C%{Q}O&xU,";
+        public static string tokenUser;
         public MainWindow() {
             InitializeComponent();
-            MainFrame.Navigate(new Uri("Decrypter.xaml", UriKind.Relative));
+            MainFrame.Navigate(new Uri("Login.xaml", UriKind.Relative));
         }
     }
 }

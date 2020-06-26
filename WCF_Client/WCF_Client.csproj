@@ -146,8 +146,8 @@
     <None Include="Connected Services\proxy\Arrays.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\proxy\project-exia.fr.wsdl" />
-    <None Include="Connected Services\proxy\project-exia.fr.xsd">
+    <None Include="Connected Services\proxy\localhost.wsdl" />
+    <None Include="Connected Services\proxy\localhost.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\proxy\service.wsdl" />

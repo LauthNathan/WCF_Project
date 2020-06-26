@@ -65,8 +65,8 @@ namespace WCF_Client {
                         appVersion = "1.0",
                         statut_Op = true,
                         operationVersion = "1.0",
-                        tokenApp = "",
-                        tokenUser = "",
+                        tokenApp = MainWindow.tokenApp,
+                        tokenUser = MainWindow.tokenUser,
                         operationName = "Decrypt",
                         info = "[[fileName, fileContent]]",
                         data = data.ToArray()
