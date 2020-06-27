@@ -143,11 +143,11 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="Connected Services\proxy\Arrays.xsd">
+    <None Include="Connected Services\proxy\192.168.1.19.wsdl" />
+    <None Include="Connected Services\proxy\192.168.1.19.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\proxy\localhost.wsdl" />
-    <None Include="Connected Services\proxy\localhost.xsd">
+    <None Include="Connected Services\proxy\Arrays.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\proxy\service.wsdl" />

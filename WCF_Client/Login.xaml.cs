@@ -43,7 +43,9 @@ namespace WCF_Client {
         }
         public MSG Auth(string username, string password) {
             var svc = new proxy.ComposantServiceClient();
-            
+            svc.ClientCredentials.Windows.ClientCredential.Domain = "WORKGROUP";
+            svc.ClientCredentials.Windows.ClientCredential.UserName = "project";
+            svc.ClientCredentials.Windows.ClientCredential.Password = "azerty";
 
             try {
                 return svc.m_service(new MSG() {

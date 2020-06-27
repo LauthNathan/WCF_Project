@@ -20,12 +20,12 @@ namespace WCF_Middleware {
         public string Rq_sql { get => rq_sql; set => rq_sql = value; }
         public SqlDataReader DataReader { get => dataReader; set => dataReader = value; }
 
-        public CAM() {
-            DataAccess = new DataAccess();
+        public CAM(DataAccess dA) {
+            DataAccess = dA;
         }
 
-        public bool checkToken(MSG message) {
-            Rq_sql = "SELECT tokenUser FROM users WHERE username = '" + message.data[0].ToString() + "' AND tokenUser = '" + message.tokenUser + "';";
+        public bool checkToken(MSG message, User usr) {
+            Rq_sql = "SELECT tokenUser FROM users WHERE username = '" + usr.Username + "' AND tokenUser = '" + message.tokenUser + "';";
             cmd = new SqlCommand(Rq_sql, DataAccess.Cnn);
             DataReader = cmd.ExecuteReader();
 
@@ -33,14 +33,31 @@ namespace WCF_Middleware {
 
                 DataReader.Close();
                 cmd.Dispose();
-                DataAccess.Cnn.Close();
                 return true;
 
             } else {
                 Console.WriteLine("Wrong user token");
                 DataReader.Close();
                 cmd.Dispose();
-                DataAccess.Cnn.Close();
+                return false;
+            }
+        }
+
+        public bool checkAppToken(MSG message) {
+            Rq_sql = "SELECT tokenApp FROM tokenApp WHERE tokenApp = '" + message.tokenApp + "';";
+            cmd = new SqlCommand(Rq_sql, DataAccess.Cnn);
+            DataReader = cmd.ExecuteReader();
+
+            if (DataReader.Read()) {
+
+                DataReader.Close();
+                cmd.Dispose();
+                return true;
+
+            } else {
+                Console.WriteLine("Wrong app token");
+                DataReader.Close();
+                cmd.Dispose();
                 return false;
             }
         }

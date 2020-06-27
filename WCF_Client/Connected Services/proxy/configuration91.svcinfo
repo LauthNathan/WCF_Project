@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="JRXCX6BI1f63JeHKwfIvZqbwyYzP4Om9sl0e80zSvY0=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="voqph6RcbL/zthhaOZlCLpZRGOX9ClLSCF+h5y3ljQw=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_IComposantService">
       <properties>
@@ -230,10 +230,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="BasicHttpBinding_IComposantService" contract="proxy.IComposantService" bindingType="basicHttpBinding" address="http://localhost:4000/WCF_Server" bindingConfiguration="BasicHttpBinding_IComposantService">
+    <endpoint name="BasicHttpBinding_IComposantService" contract="proxy.IComposantService" bindingType="basicHttpBinding" address="http://192.168.1.19:4000/WCF_Server" bindingConfiguration="BasicHttpBinding_IComposantService">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:4000/WCF_Server</serializedValue>
+          <serializedValue>http://192.168.1.19:4000/WCF_Server</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -315,10 +315,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="serviceWCF" contract="proxy.IComposantService" bindingType="netTcpBinding" address="net.tcp://localhost:4002/WCF_Server" bindingConfiguration="serviceWCF">
+    <endpoint name="serviceWCF" contract="proxy.IComposantService" bindingType="netTcpBinding" address="net.tcp://192.168.1.19:4002/WCF_Server" bindingConfiguration="serviceWCF">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://localhost:4002/WCF_Server</serializedValue>
+          <serializedValue>net.tcp://192.168.1.19:4002/WCF_Server</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://localhost" elementFormDefault="qualified" targetNamespace="http://localhost" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:tns="http://192.168.1.19" elementFormDefault="qualified" targetNamespace="http://192.168.1.19" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import namespace="http://schemas.datacontract.org/2004/07/WCF_Service" />
   <xs:element name="m_service">
     <xs:complexType>
