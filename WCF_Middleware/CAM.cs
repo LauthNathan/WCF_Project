@@ -24,8 +24,9 @@ namespace WCF_Middleware {
             DataAccess = dA;
         }
 
-        public bool checkToken(MSG message, User usr) {
-            Rq_sql = "SELECT tokenUser FROM users WHERE username = '" + usr.Username + "' AND tokenUser = '" + message.tokenUser + "';";
+        public bool checkToken(MSG message, string usr) {
+            Console.WriteLine(usr);
+            Rq_sql = "SELECT tokenUser FROM users WHERE username = '" + usr + "' AND tokenUser = '" + message.tokenUser + "';";
             cmd = new SqlCommand(Rq_sql, DataAccess.Cnn);
             DataReader = cmd.ExecuteReader();
 

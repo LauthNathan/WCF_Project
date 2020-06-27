@@ -14,7 +14,7 @@ namespace WCF_Middleware {
 
         public CAM Cam { get; set; }
         public DataAccess dA { get; set; }
-        public User user { get; set; }
+        public static User User { get; set; }
 
         [System.Security.Permissions.PrincipalPermission(
             System.Security.Permissions.SecurityAction.Demand,
@@ -33,7 +33,7 @@ namespace WCF_Middleware {
             switch (message.operationName) {
                 // DECRYPT
                 case "Decrypt":
-                    if (Cam.checkToken(message, user)) {
+                    if (Cam.checkToken(message, User.Username)) {
                         Thread workerThread = new Thread(() => DecryptService.DecryptAction(message));
                         workerThread.Start();
 
@@ -52,8 +52,9 @@ namespace WCF_Middleware {
                 case "Auth":
                     Console.WriteLine("ici");
                     Authentifier auth = new Authentifier(dA);
-                    user = new User(auth);
-                    MSG mess = user.login(message);
+                    User = new User(auth);
+                    MSG mess = User.login(message);
+                    User.Username = mess.data[0].ToString();
                     dA.Cnn.Close();
                     return mess;
                    
