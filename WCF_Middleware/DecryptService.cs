@@ -30,17 +30,19 @@ namespace WCF_Middleware {
         /// Generates the keys and calls JEE service (recursive function)
         /// </summary>
         public static void GenKeys(char[] set, string content, string key, int n, int k, string name, MSG msg) {
-            if (k == 0) {
-                string r = Decrypt(content, key);
-                JEEService.msg res = Utils.ToJEEMessage(msg);
-                res.data = new object[] { name, content, key };
-                svc.fileCheck(res);
-                return;
+            if (Utils.FOUND_SECRET == false) {
+                if (k == 0) {
+                    string r = Decrypt(content, key);
+                    JEEService.msg res = Utils.ToJEEMessage(msg);
+                    res.data = new object[] { name, content, key };
+                    svc.fileCheck(res);
+                    return;
+                }
+                Parallel.For(0, n, i => {
+                    string newPrefix = key + set[i];
+                    GenKeys(set, content, newPrefix, n, k - 1, name, msg);
+                });
             }
-            Parallel.For(0, n, i => {
-                string newPrefix = key + set[i];
-                GenKeys(set, content, newPrefix, n, k - 1, name, msg);
-            });
         }
 
         /// <summary>

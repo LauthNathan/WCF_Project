@@ -57,6 +57,7 @@ namespace WCF_Middleware {
 
                 case "Stop":
                     Utils.FOUND_SECRET = true;
+                    Console.WriteLine(Utils.FOUND_SECRET);
                     return message;
 
                 // DEFAULT
