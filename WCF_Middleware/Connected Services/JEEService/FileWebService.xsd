@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://services.recive.cesi.com/" targetNamespace="http://services.recive.cesi.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="JMSException" type="tns:JMSException" />
+  <xs:element name="fileCheck" type="tns:fileCheck" />
+  <xs:element name="fileCheckResponse" type="tns:fileCheckResponse" />
+  <xs:complexType name="fileCheck">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="msg" type="tns:msg" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="msg">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="appVersion" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="data" nillable="true" type="xs:anyType" />
+      <xs:element minOccurs="0" name="info" type="xs:string" />
+      <xs:element minOccurs="0" name="operationName" type="xs:string" />
+      <xs:element minOccurs="0" name="operationVersion" type="xs:string" />
+      <xs:element name="statutOp" type="xs:boolean" />
+      <xs:element minOccurs="0" name="tokenApp" type="xs:string" />
+      <xs:element minOccurs="0" name="tokenUser" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="fileCheckResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="JMSException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="errorCode" type="xs:string" />
+      <xs:element minOccurs="0" name="linkedException" type="tns:exception" />
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="exception">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:throwable">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="throwable">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="stackTrace" nillable="true" type="tns:stackTraceElement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="stackTraceElement" final="extension restriction">
+    <xs:sequence />
+  </xs:complexType>
+</xs:schema>

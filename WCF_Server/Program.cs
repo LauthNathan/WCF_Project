@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ServiceModel;
-using WCF_Service;
 using WCF_Middleware;
+
+
+
 
 namespace WCF_Server
 {
@@ -16,7 +18,21 @@ namespace WCF_Server
             ServiceHost selfHost = new ServiceHost(typeof(SVR));
             selfHost.Open();
             Console.WriteLine("Server launched");
-            //Console.WriteLine(fr.printHello("grosse bite de noir"));
+            /*FileService.FileWebServiceClient fs = new FileService.FileWebServiceClient();
+            FileService.msg test = new FileService.msg();
+            List<string> data = new List<string>();
+            data.Add("zizi");
+
+            test.appVersion = "app version";
+            test.info = "test";
+            test.tokenApp = "tokenapp";
+            test.tokenUser = "token";
+            test.statutOp = true;
+            test.operationName = "decrypt";
+            test.operationVersion = "vcersion";
+            test.data = data.ToArray();
+
+            fs.fileCheck(test);*/
 
             Console.ReadLine();
 
