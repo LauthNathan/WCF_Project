@@ -8,6 +8,10 @@ using WCF_Service;
 namespace WCF_Middleware {
     class DecryptService {
         public static JEEService.FileWebServiceClient svc = new JEEService.FileWebServiceClient();
+
+        /// <summary>
+        /// Sends all the decrypted files to the JEE Service
+        ///
         public static void DecryptAction(MSG message) {
             MSG msg = message;
             char[] alphabet = new char[26] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
@@ -19,15 +23,11 @@ namespace WCF_Middleware {
                 string content = message.data[i + 1].ToString();
                 GenKeys(alphabet, content, "", alphabet.Length, 4, name, msg);
             }
-
-            /*Parallel.For(0, message.data.Length, i => {
-                string name = message.data[0].ToString();
-                string content = message.data[1].ToString();
-                GenKeys(alphabet, content, "", alphabet.Length, 4);
-            });
-            return new MSG();*/
         }
 
+        /// <summary>
+        /// Generates the keys and calls JEE service (recursive function)
+        /// </summary>
         public static void GenKeys(char[] set, string content, string key, int n, int k, string name, MSG msg) {
             if (k == 0) {
                 string r = Decrypt(content, key);
@@ -42,6 +42,9 @@ namespace WCF_Middleware {
             });
         }
 
+        /// <summary>
+        /// Decrypts the file
+        /// </summary>
         public static string Decrypt(string content, string key) {
             System.Text.ASCIIEncoding encoding = new System.Text.ASCIIEncoding();
             byte[] contentBytes = encoding.GetBytes(content);

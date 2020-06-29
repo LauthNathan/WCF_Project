@@ -13,7 +13,7 @@ namespace WCF_Middleware {
         private SqlConnection cnn;
 
         public MSG Msg { get => msg; set => msg = value; }
-        
+
         public SqlConnection Cnn { get => cnn; set => cnn = value; }
 
         public DataAccess() {
@@ -21,9 +21,10 @@ namespace WCF_Middleware {
             Cnn = new SqlConnection(connectionString);
             try {
                 Cnn.Open();
-               Console.WriteLine("Connection Open ! ");
-                
-            } catch (Exception ex) {
+                Console.WriteLine("Connection Open ! ");
+
+            } catch (Exception exc) {
+                Console.WriteLine(exc.Message);
                 Console.WriteLine("Can not open connection ! ");
             }
         }

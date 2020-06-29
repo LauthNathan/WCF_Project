@@ -1,21 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ServiceModel;
-using System.Runtime.Serialization;
+﻿using System.ServiceModel;
 
 namespace WCF_Service {
-
-    [ServiceContract(
+  [ServiceContract(
         Name = "IComposantService",
         Namespace = "http://192.168.1.19")]
     public interface iSVR {
-
         [OperationContract]
         MSG m_service(MSG message);
-
     }
 
     public struct MSG {
