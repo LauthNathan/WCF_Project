@@ -55,6 +55,10 @@ namespace WCF_Middleware {
 
                     return message;
 
+                case "Stop":
+                    Utils.FOUND_SECRET = true;
+                    return message;
+
                 // DEFAULT
                 default:
                     message.statut_Op = false;

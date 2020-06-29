@@ -11,7 +11,7 @@ namespace WCF_Middleware {
 
         /// <summary>
         /// Sends all the decrypted files to the JEE Service
-        ///
+        /// </summary>
         public static void DecryptAction(MSG message) {
             MSG msg = message;
             char[] alphabet = new char[26] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
@@ -19,6 +19,7 @@ namespace WCF_Middleware {
             int length = message.data.Length / 2;
 
             for (int i = 0; i < length; i += 2) {
+                if (Utils.FOUND_SECRET) break;
                 string name = message.data[i].ToString();
                 string content = message.data[i + 1].ToString();
                 GenKeys(alphabet, content, "", alphabet.Length, 4, name, msg);

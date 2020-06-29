@@ -28,6 +28,24 @@ namespace WCF_Client {
             listView.ItemsSource = items;
         }
 
+        private void stopButton_Click(object sender, RoutedEventArgs e) {
+            var svc = new proxy.ComposantServiceClient();
+            svc.ClientCredentials.Windows.ClientCredential.Domain = "WORKGROUP";
+            svc.ClientCredentials.Windows.ClientCredential.UserName = "project";
+            svc.ClientCredentials.Windows.ClientCredential.Password = "azerty";
+            proxy.MSG msg = new proxy.MSG() {
+                appVersion = "1.0",
+                statut_Op = true,
+                operationVersion = "1.0",
+                tokenApp = MainWindow.tokenApp,
+                tokenUser = MainWindow.tokenUser,
+                operationName = "Stop",
+                info = "Stop",
+                data = new object[] {}
+            };
+            svc.m_service(msg);
+        }
+
         /// <summary>
         /// Upload button trigger.
         /// </summary>

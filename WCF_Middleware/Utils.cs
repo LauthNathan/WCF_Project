@@ -5,7 +5,8 @@ using System.Text;
 using WCF_Service;
 
 namespace WCF_Middleware {
-    class Utils {
+    public static class Utils {
+        public static bool FOUND_SECRET = false;
         public static JEEService.msg ToJEEMessage(MSG msg) {
             JEEService.msg res = new JEEService.msg();
             res.appVersion = msg.appVersion;
