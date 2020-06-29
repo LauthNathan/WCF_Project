@@ -108,6 +108,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Connected Services\JEEService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\proxy\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -143,6 +148,10 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="Connected Services\JEEService\FileWebService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\JEEService\FileWebServiceService.wsdl" />
     <None Include="Connected Services\proxy\192.168.1.19.wsdl" />
     <None Include="Connected Services\proxy\192.168.1.19.xsd">
       <SubType>Designer</SubType>
@@ -170,6 +179,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\JEEService\" />
     <WCFMetadataStorage Include="Connected Services\proxy\" />
   </ItemGroup>
   <ItemGroup>
@@ -180,6 +190,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\proxy\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\JEEService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\JEEService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\JEEService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

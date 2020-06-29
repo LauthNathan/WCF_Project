@@ -49,6 +49,9 @@ namespace WCF_Client {
                 Task.Factory.StartNew(() => {
                     List<object> data = new List<object>();
                     var svc = new proxy.ComposantServiceClient();
+                    svc.ClientCredentials.Windows.ClientCredential.Domain = "WORKGROUP";
+                    svc.ClientCredentials.Windows.ClientCredential.UserName = "project";
+                    svc.ClientCredentials.Windows.ClientCredential.Password = "azerty";
                     Stream a = fileDialog.OpenFile();
                     StringBuilder txt = new StringBuilder();
                     Parallel.For(0, fileDialog.FileNames.Length, i => {

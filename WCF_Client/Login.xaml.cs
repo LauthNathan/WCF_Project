@@ -22,8 +22,8 @@ namespace WCF_Client {
     public partial class Login : Page {
         public Login() {
             InitializeComponent();
-         
-            
+
+
         }
 
         private void button_Click(object sender, RoutedEventArgs e) {
@@ -36,7 +36,11 @@ namespace WCF_Client {
                 if (t.Result.statut_Op == true) {
                     MainWindow.tokenUser = t.Result.tokenUser;
                     this.NavigationService.Navigate(new Uri("Decrypter.xaml", UriKind.Relative));
-                } else MessageBox.Show(t.Result.info);
+                } else if (t.Result.info == "" || t.Result.info == null) {
+                    MessageBox.Show("An error occured");
+                } else {
+                    MessageBox.Show(t.Result.info);
+                }
                 button.Content = "SE CONNECTER";
                 button.IsEnabled = true;
             }, TaskScheduler.FromCurrentSynchronizationContext());
@@ -60,8 +64,16 @@ namespace WCF_Client {
                 });
             } catch (Exception exc) {
                 Console.WriteLine(exc.Message);
-                MessageBox.Show("An error occured");
-                return new MSG();
+                return new MSG() {
+                    appVersion = "1.0",
+                    info = "Error contacting the server",
+                    operationName = "Auth",
+                    operationVersion = "1.0",
+                    tokenApp = MainWindow.tokenApp,
+                    statut_Op = false,
+                    tokenUser = "not logged in",
+                    data = new object[] { }
+                };
             }
         }
     }
