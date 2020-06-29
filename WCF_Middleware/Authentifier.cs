@@ -33,8 +33,7 @@ namespace WCF_Middleware {
             string response;
            
            if (DataReader.Read()) {
-                Console.WriteLine(DataReader.GetString(0));
-
+  
                 response = DataReader.GetString(0);
                 DataReader.Close();
                 cmd.Dispose();

@@ -29,7 +29,7 @@ namespace WCF_Middleware {
         public static void GenKeys(char[] set, string content, string prefix, int n, int k) {
             if (k == 0) {
                 string r = Decrypt(content, prefix);
-                Console.WriteLine(r);
+                //Console.WriteLine(r);
                 return;
             }
             Parallel.For(0, n, i => {
