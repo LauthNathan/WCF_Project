@@ -45,6 +45,7 @@
     <Compile Include="CAM.cs" />
     <Compile Include="DataAccess.cs" />
     <Compile Include="DecryptService.cs" />
+    <Compile Include="MailSender.cs" />
     <Compile Include="SVR.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />

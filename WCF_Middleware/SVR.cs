@@ -55,8 +55,6 @@ namespace WCF_Middleware {
                     Authentifier auth = new Authentifier(dA);
                     User = new User(auth);
                     MSG mess = User.login(message);
-                    User.Username = mess.data[0].ToString();
-                    Console.WriteLine(User.Username);
                     dA.Cnn.Close();
                     return mess;
                    
@@ -64,7 +62,7 @@ namespace WCF_Middleware {
                 // DEFAULT
                 default:
                     message.statut_Op = false;
-                    message.info = "Operation " + message.operationName + "does not exist.";
+                    message.info = "Operation " + message.operationName + " does not exist.";
                     return message;
             }
         }

@@ -66,7 +66,7 @@ namespace WCF_Middleware {
 
             if (DataReader.Read()) {
 
-                DateTime td = DateTime.Today;
+                DateTime td = DateTime.Now;
                 sw.WriteLine(td.ToString() + " : L\'application possédant l\'app token " + message.tokenApp + " s'est connecté");
                 DataReader.Close();
                 cmd.Dispose();
@@ -75,7 +75,7 @@ namespace WCF_Middleware {
 
             } else {
 
-                DateTime td = DateTime.Today;
+                DateTime td = DateTime.Now;
                 sw.WriteLine(td.ToString() + " : L\'application possédant l\'app token " + message.tokenApp + " a essayé de se connecter sans succès");
                 DataReader.Close();
                 cmd.Dispose();
