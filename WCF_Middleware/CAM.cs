@@ -32,13 +32,9 @@ namespace WCF_Middleware {
 
         public bool checkToken(MSG message) {
 
-            if(File.AppendText(path) == null) {
+           
                 sw = File.AppendText(path);
-            }
-            else {
-                Thread.Sleep(1000);
-                sw = File.AppendText(path);
-            }
+           
 
 
 
@@ -60,12 +56,9 @@ namespace WCF_Middleware {
 
         public bool checkAppToken(MSG message) {
 
-            if (File.AppendText(path) == null) {
+            
                 sw = File.AppendText(path);
-            } else {
-                Thread.Sleep(1000);
-                sw = File.AppendText(path);
-            }
+            
 
             if (DataAccess.checkAppToken(message)) {
 

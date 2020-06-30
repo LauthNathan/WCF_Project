@@ -55,6 +55,10 @@ namespace WCF_Middleware {
 
                 case "Stop":
                     Console.WriteLine("Stop");
+                    Console.WriteLine(message.statut_Op);
+                    Console.WriteLine(message.info);
+                    Console.WriteLine(message.data[0].ToString());
+
                     if (Cam.checkToken(message)) {
                         Utils.FOUND_SECRET = true;
                         Console.WriteLine(Utils.FOUND_SECRET);
