@@ -14,7 +14,6 @@ namespace WCF_Middleware {
         public DataAccess dA { get; set; }
         public User User { get; set; }
 
-        [System.Security.Permissions.PrincipalPermission(System.Security.Permissions.SecurityAction.Demand, Role = @"BUILTIN\Utilisateurs")]
         public MSG m_service(MSG message) {
 
             dA = new DataAccess();
@@ -35,13 +34,13 @@ namespace WCF_Middleware {
 
                         message.statut_Op = true;
                         message.info = "Deencryption started";
-                        dA.Cnn.Close();
+                        
 
                         return message;
                     } else {
                         message.statut_Op = false;
                         message.info = "Wrong user token";
-                        dA.Cnn.Close();
+                        
 
                         return message;
                     }
@@ -50,15 +49,22 @@ namespace WCF_Middleware {
                 case "Auth":
                     Authentifier auth = new Authentifier(dA);
                     User = new User(auth);
-                    message = User.login(message);
-                    dA.Cnn.Close();
+                    message = User.login(message); 
 
                     return message;
 
                 case "Stop":
-                    Utils.FOUND_SECRET = true;
-                    Console.WriteLine(Utils.FOUND_SECRET);
-                    return message;
+                    Console.WriteLine("Stop");
+                    if (Cam.checkToken(message)) {
+                        Utils.FOUND_SECRET = true;
+                        Console.WriteLine(Utils.FOUND_SECRET);
+                        return message;
+                    } else {
+                        message.statut_Op = false;
+                        message.info = "Wrong user token";
+
+                        return message;
+                    }
 
                 // DEFAULT
                 default:

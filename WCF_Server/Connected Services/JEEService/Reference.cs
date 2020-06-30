@@ -139,20 +139,6 @@ namespace WCF_Server.JEEService {
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://services.recive.cesi.com/")]
     public partial class fileCheckResponse : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private string returnField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public string @return {
-            get {
-                return this.returnField;
-            }
-            set {
-                this.returnField = value;
-                this.RaisePropertyChanged("return");
-            }
-        }
-        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -329,13 +315,12 @@ namespace WCF_Server.JEEService {
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://services.recive.cesi.com/", ConfigurationName="JEEService.IFileWebService")]
     public interface IFileWebService {
         
-        // CODEGEN : Le paramètre 'return' nécessite des informations de schéma supplémentaires qui ne peuvent pas être capturées en utilisant le mode du paramètre. L'attribut spécifique est 'System.Xml.Serialization.XmlElementAttribute'.
+        // CODEGEN : Le paramètre 'msg' nécessite des informations de schéma supplémentaires qui ne peuvent pas être capturées en utilisant le mode du paramètre. L'attribut spécifique est 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://services.recive.cesi.com/IFileWebService/fileCheckRequest", ReplyAction="http://services.recive.cesi.com/IFileWebService/fileCheckResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(WCF_Server.JEEService.JMSException), Action="http://services.recive.cesi.com/IFileWebService/fileCheck/Fault/JMSException", Name="JMSException")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(fileCheckResponse))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(fileCheck))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
         WCF_Server.JEEService.fileCheckResponse1 fileCheck(WCF_Server.JEEService.fileCheckRequest request);
     }
     
@@ -363,15 +348,7 @@ namespace WCF_Server.JEEService {
     [System.ServiceModel.MessageContractAttribute(WrapperName="fileCheckResponse", WrapperNamespace="http://services.recive.cesi.com/", IsWrapped=true)]
     public partial class fileCheckResponse1 {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://services.recive.cesi.com/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string @return;
-        
         public fileCheckResponse1() {
-        }
-        
-        public fileCheckResponse1(string @return) {
-            this.@return = @return;
         }
     }
     
@@ -407,11 +384,10 @@ namespace WCF_Server.JEEService {
             return base.Channel.fileCheck(request);
         }
         
-        public string fileCheck(WCF_Server.JEEService.msg msg) {
+        public void fileCheck(WCF_Server.JEEService.msg msg) {
             WCF_Server.JEEService.fileCheckRequest inValue = new WCF_Server.JEEService.fileCheckRequest();
             inValue.msg = msg;
             WCF_Server.JEEService.fileCheckResponse1 retVal = ((WCF_Server.JEEService.IFileWebService)(this)).fileCheck(inValue);
-            return retVal.@return;
         }
     }
 }
