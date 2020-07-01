@@ -20,6 +20,9 @@ namespace WCF_Middleware {
             connectDB();
         }
 
+        /// <summary>
+        /// Connect this instance to the database
+        /// </summary>
         private void connectDB() {
             ConnectionString = "Data Source=DESKTOP-500VV2V\\WCF_SQL_SERVER;Initial Catalog=wcf_bdd;Integrated Security=True;";
             Cnn = new SqlConnection(ConnectionString);
@@ -33,6 +36,12 @@ namespace WCF_Middleware {
             }
         }
 
+        /// <summary>
+        /// Get the usertoken corresponding to the given username and password
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="pswd"></param>
+        /// <returns></returns>
         public string authenticate(string username, string pswd) {
             Rq_sql = "SELECT tokenUser FROM users WHERE username = '" + username + "' AND password = '" + pswd + "';";
             Cmd = new SqlCommand(Rq_sql, Cnn);
@@ -54,6 +63,11 @@ namespace WCF_Middleware {
             }
         }
 
+        /// <summary>
+        /// Retrieve the mail corresponding to the given user token 
+        /// </summary>
+        /// <param name="usertoken">User token of the user sending the request to the server</param>
+        /// <returns>The mail as a string, or null if no mail is found</returns>
         public string getMail(string usertoken) {
             string Rq_sql = "SELECT email FROM users WHERE tokenUser = '" + usertoken + "';";
             SqlCommand cmd = new SqlCommand(Rq_sql, Cnn);
@@ -76,6 +90,11 @@ namespace WCF_Middleware {
 
         }
 
+        /// <summary>
+        /// Check if the user token given by the message is in the database, and so authorized to access to the different services 
+        /// </summary>
+        /// <param name="message">The MSG object sent by the client</param>
+        /// <returns>True if the username correspond to one in the database, and false if not </returns>
         public bool checkToken(MSG message) {
 
             Rq_sql = "SELECT username, tokenUser FROM users WHERE tokenUser = '" + message.tokenUser + "';";
@@ -98,6 +117,11 @@ namespace WCF_Middleware {
             }
         }
 
+        /// <summary>
+        /// Get the username associated wit the given user token
+        /// </summary>
+        /// <param name="message">The MSG object sent by the client</param>
+        /// <returns>Return the username found, or null if no correspondance has been found</returns>
         public string getUsername(MSG message) {
             Rq_sql = "SELECT username FROM users WHERE tokenUser = '" + message.tokenUser + "';";
             Cmd = new SqlCommand(Rq_sql, Cnn);
@@ -120,6 +144,11 @@ namespace WCF_Middleware {
             }
         }
 
+        /// <summary>
+        /// Check if the app token given by the message is in the database, and so authorized to access to the different services 
+        /// </summary>
+        /// <param name="message">The MSG object sent by the client</param>
+        /// <returns>True if the app token correspond to one in the database, and false if not</returns>
         public bool checkAppToken(MSG message) {
             Rq_sql = "SELECT tokenApp FROM tokenApp WHERE tokenApp = '" + message.tokenApp + "';";
             Cmd = new SqlCommand(Rq_sql, Cnn);

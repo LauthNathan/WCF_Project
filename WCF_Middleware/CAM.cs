@@ -15,20 +15,21 @@ namespace WCF_Middleware {
         public string Path { get; set; }
         public StreamWriter Sw { get; set; }
         
-
+        
         public CAM(DataAccess dA) {
             DataAccess = dA;
             Path = @"C:\Users\Vimaire\source\repos\WCF_Project\WCF_Server\log.txt";
             
         }
 
+        /// <summary>
+        /// Check if the user token is authorized and log the result in a txt file 
+        /// </summary>
+        /// <param name="message">The MSG object sent by the client</param>
+        /// <returns>True if the token is authorized and false if not</returns>
         public bool checkToken(MSG message) {
 
-           
-                Sw = File.AppendText(Path);
-           
-
-
+            Sw = File.AppendText(Path);
 
             if (DataAccess.checkToken(message)) {
 
@@ -46,12 +47,15 @@ namespace WCF_Middleware {
             }
         }
 
+        /// <summary>
+        /// Check if the app token is authorized and log the result in a txt file 
+        /// </summary>
+        /// <param name="message">The MSG object sent by the client</param>
+        /// <returns>True if the token is authorized and false if not</returns>
         public bool checkAppToken(MSG message) {
 
-            
-                Sw = File.AppendText(Path);
-            
-
+            Sw = File.AppendText(Path);
+ 
             if (DataAccess.checkAppToken(message)) {
 
                 DateTime td = DateTime.Now;

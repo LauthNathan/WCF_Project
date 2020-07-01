@@ -15,6 +15,11 @@ namespace WCF_Middleware {
         public DataAccess dA { get; set; }
         public User User { get; set; }
 
+        /// <summary>
+        /// The only method exposed by the endpoint, take care of all the action performed 
+        /// </summary>
+        /// <param name="message">object containing all the needed informations such as the action to perform or the user token</param>
+        /// <returns>The same message object, modified with updated values</returns>
         public MSG m_service(MSG message) {
 
             dA = new DataAccess();
@@ -72,18 +77,16 @@ namespace WCF_Middleware {
                     return message;
 
                 case "Stop":
-                    Console.WriteLine("million");
-                    Console.WriteLine(message.tokenUser);
-                    
-                        Utils.SECRET_CONTENT = message.data[0].ToString();
-                        Utils.SECRET_FILENAME = message.data[1].ToString();
-                        Utils.SECRET_KEY = message.data[2].ToString();
-                        Utils.SECRET_CONFIDENCE = message.data[3].ToString();
-                        Utils.FOUND_SECRET = true;
-                        Console.WriteLine(Utils.FOUND_SECRET);
-                        dA.Cnn.Close();
+
+                    Console.WriteLine("Secret found");
+                    Utils.SECRET_CONTENT = message.data[0].ToString();
+                    Utils.SECRET_FILENAME = message.data[1].ToString();
+                    Utils.SECRET_KEY = message.data[2].ToString();
+                    Utils.SECRET_CONFIDENCE = message.data[3].ToString();
+                    Utils.FOUND_SECRET = true;
+                    dA.Cnn.Close();
                        
-                        return message;
+                     return message;
                     
 
                 // DEFAULT

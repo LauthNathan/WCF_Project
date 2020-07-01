@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using WCF_Service;
-using System.Security.Cryptography;
 
 namespace WCF_Middleware {
     public class User {
@@ -16,11 +15,13 @@ namespace WCF_Middleware {
         }
 
         /// <summary>
-        /// Logs in the user
+        /// Log in the user using teh data send in the MSG object
         /// </summary>
+        /// <param name="message">MSG object ciming from the client</param>
+        /// <returns>The message, with the user token</returns>
         public MSG login(MSG message) {
-            using (MD5 md5Hash = MD5.Create()) {
-                string tokenUser = Auth.authenticate(message.data[0].ToString(), GetMd5Hash(md5Hash, message.data[1].ToString()));
+            
+                string tokenUser = Auth.authenticate(message.data[0].ToString(), message.data[1].ToString());
 
                 if (tokenUser != null) {
                     message.tokenUser = tokenUser;
@@ -31,25 +32,10 @@ namespace WCF_Middleware {
                 message.statut_Op = false;
                 message.info = "Wrong credentials";
                 return message;
-            }
+            
         }
 
-        private static string GetMd5Hash(MD5 md5Hash, string input) {
-            // Convert the input string to a byte array and compute the hash.
-            byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
-            // Create a new Stringbuilder to collect the bytes
-            // and create a string.
-            StringBuilder sBuilder = new StringBuilder();
-
-            // Loop through each byte of the hashed data
-            // and format each one as a hexadecimal string.
-            for (int i = 0; i < data.Length; i++) {
-                sBuilder.Append(data[i].ToString("x2"));
-            }
-
-            // Return the hexadecimal string.
-            return sBuilder.ToString();
-        }
+        
 
     }
 

@@ -11,6 +11,10 @@ using WCF_Service;
 namespace WCF_Middleware {
     public class MailSender {
 
+        /// <summary>
+        /// Send a mail to the mail associated with the user token in the MSG object
+        /// </summary>
+        /// <param name="msg">The MSG object sent by the client</param>
         public static void sendMail(MSG msg) {
             DataAccess dA = new DataAccess();
             string to = dA.getMail(msg.tokenUser);

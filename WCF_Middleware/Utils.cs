@@ -12,6 +12,11 @@ namespace WCF_Middleware {
         public static string SECRET_KEY = "";
         public static string SECRET_CONFIDENCE = "";
 
+        /// <summary>
+        /// Transform a MSG object in JEEService msg object to make it understandable by JEE
+        /// </summary>
+        /// <param name="msg">The MSG object sent by the client</param>
+        /// <returns>The JEEService msg object</returns>
         public static JEEService.msg ToJEEMessage(MSG msg) {
             JEEService.msg res = new JEEService.msg();
             res.appVersion = msg.appVersion;
