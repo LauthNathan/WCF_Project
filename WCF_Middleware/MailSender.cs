@@ -19,7 +19,7 @@ namespace WCF_Middleware {
 
                     MailMessage message = new MailMessage();
                     SmtpClient smtp = new SmtpClient();
-                    message.From = new MailAddress("devcesi@outlook.fr");
+                    message.From = new MailAddress("developpeurcesi@outlook.fr");
                     message.To.Add(new MailAddress(to));
                     message.Subject = "Update : fichiers chiffrés";
                     message.IsBodyHtml = true; //to make message body as html  
@@ -28,7 +28,7 @@ namespace WCF_Middleware {
                     smtp.Host = "SMTP.office365.com"; //for gmail host  
                     smtp.EnableSsl = true;
                     smtp.UseDefaultCredentials = false;
-                    smtp.Credentials = new NetworkCredential("devcesi@outlook.fr", "Password420");
+                    smtp.Credentials = new NetworkCredential("developpeurcesi@outlook.fr", "Password420");
                     smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                     smtp.Send(message);
                 } catch (Exception e) {
@@ -40,8 +40,8 @@ namespace WCF_Middleware {
 
                     MailMessage message = new MailMessage();
                     SmtpClient smtp = new SmtpClient();
-                    message.From = new MailAddress("devcesi@outlook.fr");
-                    message.To.Add(new MailAddress("devcesi@outlook.fr"));
+                    message.From = new MailAddress("developpeurcesi");
+                    message.To.Add(new MailAddress("developpeurcesi"));
                     message.Subject = "Erreur mail";
                     message.IsBodyHtml = true; //to make message body as html  
                     message.Body = "L'utilisateur avec le user token " + msg.tokenUser  + " n'a pas de de mail";
@@ -49,7 +49,7 @@ namespace WCF_Middleware {
                     smtp.Host = "SMTP.office365.com"; //for gmail host  
                     smtp.EnableSsl = true;
                     smtp.UseDefaultCredentials = false;
-                    smtp.Credentials = new NetworkCredential("devcesi@outlook.fr", "Password420");
+                    smtp.Credentials = new NetworkCredential("developpeurcesir", "Password420");
                     smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                     smtp.Send(message);
                 } catch (Exception e) {

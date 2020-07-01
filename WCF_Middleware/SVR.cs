@@ -30,6 +30,11 @@ namespace WCF_Middleware {
             switch (message.operationName) {
                 // DECRYPT
                 case "Decrypt":
+                    Utils.SECRET_CONTENT = "";
+                    Utils.SECRET_FILENAME = "";
+                    Utils.SECRET_KEY = "";
+                    Utils.SECRET_CONFIDENCE = "";
+                    Utils.FOUND_SECRET = false;
                     if (Cam.checkToken(message)) {
                         var x = Task.Factory.StartNew(() => {
                             DecryptService.DecryptAction(message);

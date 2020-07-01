@@ -18,7 +18,9 @@ namespace WCF_Middleware {
         /// </summary>
         public static bool DecryptAction(MSG message) {
             MSG msg = message;
+            bool finished = false;
             char[] alphabet = new char[26] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+            //char[] alphabet = new char[5] { 'A', 'B', 'H', 'I', 'W'};
 
             int length = message.data.Length / 2;
 
@@ -28,6 +30,7 @@ namespace WCF_Middleware {
                 string content = message.data[i + 1].ToString();
                 GenKeys(alphabet, content, "", alphabet.Length, 4, name, msg);
             }
+
             return Utils.FOUND_SECRET;
         }
 
@@ -56,6 +59,7 @@ namespace WCF_Middleware {
                         res.data = new object[] { name, rrr, key };
                     
                         try {
+                            Console.WriteLine(key);
                             svc.fileCheck(res);    
                         } catch (FaultException ex) {
                             Console.WriteLine(ex);
@@ -64,6 +68,11 @@ namespace WCF_Middleware {
                     
                     return;
                 }
+                /*for (int i=0; i<n; i++) {
+                    if (Utils.FOUND_SECRET) break;
+                    string newPrefix = key + set[i];
+                    GenKeys(set, content, newPrefix, n, k - 1, name, msg);
+                }*/
                 Parallel.For(0, n, (i, state) => {
                     if (Utils.FOUND_SECRET) state.Break();
                     string newPrefix = key + set[i];
