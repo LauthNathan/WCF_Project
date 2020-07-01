@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="pIJD9NnOzaduGvwZdqznKJezCzydCXJx4mNbroKccaQ=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="5rJLwmoerykoiUmPDDiQh8CqE/5vSQ373VnwD+cK32k=">
   <bindingConfigurations>
-    <bindingConfiguration bindingType="basicHttpBinding" name="FileWebServicePortBinding1">
+    <bindingConfiguration bindingType="basicHttpBinding" name="FileWebServicePortBinding">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>FileWebServicePortBinding1</serializedValue>
+          <serializedValue>FileWebServicePortBinding</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -112,7 +112,7 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="FileWebServicePort" contract="JEEService.IFileWebService" bindingType="basicHttpBinding" address="http://192.168.1.18:8080/FileWebServiceService/FileWebService" bindingConfiguration="FileWebServicePortBinding1">
+    <endpoint name="FileWebServicePort" contract="JEEService.IFileWebService" bindingType="basicHttpBinding" address="http://192.168.1.18:8080/FileWebServiceService/FileWebService" bindingConfiguration="FileWebServicePortBinding">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>http://192.168.1.18:8080/FileWebServiceService/FileWebService</serializedValue>
@@ -124,7 +124,7 @@
           <serializedValue>basicHttpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>FileWebServicePortBinding1</serializedValue>
+          <serializedValue>FileWebServicePortBinding</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>JEEService.IFileWebService</serializedValue>

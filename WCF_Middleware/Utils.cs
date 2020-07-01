@@ -7,6 +7,11 @@ using WCF_Service;
 namespace WCF_Middleware {
     public static class Utils {
         public static bool FOUND_SECRET = false;
+        public static string SECRET_CONTENT = "";
+        public static string SECRET_FILENAME = "";
+        public static string SECRET_KEY = "";
+        public static string SECRET_CONFIDENCE = "";
+
         public static JEEService.msg ToJEEMessage(MSG msg) {
             JEEService.msg res = new JEEService.msg();
             res.appVersion = msg.appVersion;
