@@ -28,24 +28,6 @@ namespace WCF_Client {
             listView.ItemsSource = items;
         }
 
-        private void stopButton_Click(object sender, RoutedEventArgs e) {
-            var svc = new proxy.ComposantServiceClient();
-            svc.ClientCredentials.Windows.ClientCredential.Domain = "WORKGROUP";
-            svc.ClientCredentials.Windows.ClientCredential.UserName = "project";
-            svc.ClientCredentials.Windows.ClientCredential.Password = "azerty";
-            proxy.MSG msg = new proxy.MSG() {
-                appVersion = "1.0",
-                statut_Op = true,
-                operationVersion = "1.0",
-                tokenApp = MainWindow.tokenApp,
-                tokenUser = MainWindow.tokenUser,
-                operationName = "Stop",
-                info = "Stop",
-                data = new object[] {}
-            };
-            svc.m_service(msg);
-        }
-
         /// <summary>
         /// Upload button trigger.
         /// </summary>
@@ -64,8 +46,13 @@ namespace WCF_Client {
                 })
                 .ContinueWith(t => {
                     if (t.Result.statut_Op == true) {
-                        for (int i = 0; i < items.Count; i++) { items[i].status = t.Result.info; }
-                        listView.Items.Refresh();
+                        /*for (int i = 0; i < items.Count; i++) { items[i].status = t.Result.info; }
+                        listView.Items.Refresh();*/
+                        string secret = t.Result.data[0].ToString();
+                        string filename = t.Result.data[1].ToString();
+                        string key = t.Result.data[2].ToString();
+                        string confidence = t.Result.data[3].ToString();
+                        MessageBox.Show(secret + " / " + filename + " / " + " / " + key + " / " + confidence);
                     } else if (t.Result.info == "" || t.Result.info == null) {
                         MessageBox.Show("An error occured");
                     } else {
@@ -82,7 +69,7 @@ namespace WCF_Client {
             svc.ClientCredentials.Windows.ClientCredential.UserName = "project";
             svc.ClientCredentials.Windows.ClientCredential.Password = "azerty";
 
-             // Creates the msg to send to the service.
+            // Creates the msg to send to the service.
             proxy.MSG msg = new proxy.MSG() {
                 appVersion = "1.0",
                 statut_Op = true,

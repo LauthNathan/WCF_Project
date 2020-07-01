@@ -11,7 +11,6 @@
     <Grid Background="#FFF" Margin="0">
         <Grid Background="#FFF" Height="360" Width="640" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Button x:Name="button" Content="UPLOAD" HorizontalAlignment="Left" VerticalAlignment="Top" Width="320" Margin="16,16,0,0" FontSize="24" BorderThickness="0" Background="{x:Null}" Foreground="#FF5C6BC0" Padding="16,8" Cursor="Hand" FontWeight="Bold" Click="button_Click"/>
-            <Button x:Name="stopButton" Content="Stop" HorizontalAlignment="Right" VerticalAlignment="Top" Width="320" Margin="16,16,0,0" FontSize="24" BorderThickness="0" Background="{x:Null}" Foreground="#FF5C6BC0" Padding="16,8" Cursor="Hand" FontWeight="Bold" Click="stopButton_Click"/>
             <ListView Name="listView" HorizontalAlignment="Center" Height="200" Margin="0,128,0,0"
               VerticalAlignment="Top" Width="400">
                 <ListView.View>

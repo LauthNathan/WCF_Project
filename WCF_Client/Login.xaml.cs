@@ -4,12 +4,11 @@ using System.Windows;
 using System.Windows.Controls;
 using WCF_Client.proxy;
 
-namespace WCF_Client
-{
-  /// <summary>
-  /// Logique d'interaction pour Login.xaml
-  /// </summary>
-  public partial class Login : Page {
+namespace WCF_Client {
+    /// <summary>
+    /// Logique d'interaction pour Login.xaml
+    /// </summary>
+    public partial class Login : Page {
         public Login() {
             InitializeComponent();
         }
