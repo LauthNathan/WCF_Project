@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.ServiceModel;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml;
 using WCF_Service;
@@ -14,7 +16,7 @@ namespace WCF_Middleware {
         /// <summary>
         /// Sends all the decrypted files to the JEE Service
         /// </summary>
-        public static void DecryptAction(MSG message) {
+        public static bool DecryptAction(MSG message) {
             MSG msg = message;
             char[] alphabet = new char[26] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
 
@@ -26,6 +28,7 @@ namespace WCF_Middleware {
                 string content = message.data[i + 1].ToString();
                 GenKeys(alphabet, content, "", alphabet.Length, 4, name, msg);
             }
+            return Utils.FOUND_SECRET;
         }
 
         /// <summary>
@@ -34,54 +37,35 @@ namespace WCF_Middleware {
         public static void GenKeys(char[] set, string content, string key, int n, int k, string name, MSG msg) {
             if (Utils.FOUND_SECRET == false) {
                 if (k == 0) {
-                    string r = Decrypt(content, key);
-                    JEEService.msg res = Utils.ToJEEMessage(msg);
-                    /*string a = XmlConvert.EncodeName(r);
-                    string b = System.Net.WebUtility.HtmlEncode(r);
-                    r.Replace("!", "&#33;");
-                    r.Replace("\"", "&#34;");
-                    r.Replace("#", "&#35;");
-                    r.Replace("$", "&#36;");
-                    r.Replace("%", "&#37;");
-                    r.Replace("&", "&#38;");
-                    r.Replace("\'", "&#39;");
-                    r.Replace("(!)", "&#40;");
-                    r.Replace(")", "&#41;");
-                    r.Replace("*", "&#42;");
-                    r.Replace("+", "&#43;");
-                    r.Replace(",", "&#44;");
-                    r.Replace("-", "&#45;");
-                    r.Replace(".", "&#46;");
-                    r.Replace("/", "&#47;");
-                    r.Replace(":", "&#58;");
-                    r.Replace(";", "&#59;");
-                    r.Replace("<", "&#60;");
-                    r.Replace("=", "&#61;");
-                    r.Replace(">", "&#62;");
-                    r.Replace("?", "&#63;");
-                    r.Replace("@", "&#64;");
-                    r.Replace("[", "&#91;");
-                    r.Replace("\\", "&#92;");
-                    r.Replace("]", "&#93;");
-                    r.Replace("^", "&#94;");
-                    r.Replace("_", "&#95;");
-                    r.Replace("`", "&#96;");
-                    r.Replace("{", "&#123;");
-                    r.Replace("|", "&#124;");
-                    r.Replace("}", "&#125;");
-                    r.Replace("~", "&#126;");*/
+                    if (Utils.FOUND_SECRET == false) {
+                        string r = Decrypt(content, key);
+                        JEEService.msg res = Utils.ToJEEMessage(msg);
+                        System.Text.UnicodeEncoding encoding = new System.Text.UnicodeEncoding();
+                        byte[] rr = encoding.GetBytes(r);
+                        //sbyte[] x = (sbyte[])Array.ConvertAll(rr, b => unchecked((sbyte)b));
+                        string rrr = "";
+                        for (int i=0; i<rr.Length; i++) {
+                            if (i==rr.Length-1) {
+                                rrr += rr[i].ToString();
+                            } else {
+                                rrr += rr[i].ToString() + ",";
+                            }
+                        }
 
-                    res.data = new object[] { name, content, key };
-                    if (key == "AAAA") {
+
+                        res.data = new object[] { name, rrr, key };
+                    
                         try {
-                            svc.fileCheck(res);
+                            svc.fileCheck(res);    
                         } catch (FaultException ex) {
                             Console.WriteLine(ex);
                         }
                     }
+                    
                     return;
                 }
-                Parallel.For(0, n, i => {
+                Parallel.For(0, n, (i, state) => {
+                    if (Utils.FOUND_SECRET) state.Break();
                     string newPrefix = key + set[i];
                     GenKeys(set, content, newPrefix, n, k - 1, name, msg);
                 });
@@ -93,7 +77,7 @@ namespace WCF_Middleware {
         /// Decrypts the file
         /// </summary>
         public static string Decrypt(string content, string key) {
-            System.Text.ASCIIEncoding encoding = new System.Text.ASCIIEncoding();
+            System.Text.UnicodeEncoding encoding = new System.Text.UnicodeEncoding();
             byte[] contentBytes = encoding.GetBytes(content);
             byte[] keyBytes = encoding.GetBytes(key);
             byte[] resultBytes = new byte[contentBytes.Length];

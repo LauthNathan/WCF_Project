@@ -40,10 +40,11 @@ namespace WCF_Middleware {
 
             if (DataReader.Read()) {
 
+                string response = DataReader.GetString(0);
                 DataReader.Close();
                 cmd.Dispose();
-                
-                return DataReader.GetString(0);
+
+                return response;
 
             } else {
 

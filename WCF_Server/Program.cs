@@ -7,6 +7,7 @@ namespace WCF_Server {
         static void Main(string[] args) {
             ServiceHost selfHost = new ServiceHost(typeof(SVR));
             selfHost.Open();
+           
             Console.WriteLine("Server launched");
             Console.ReadLine();
         }

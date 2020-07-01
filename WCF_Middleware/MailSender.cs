@@ -32,6 +32,7 @@ namespace WCF_Middleware {
                     smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                     smtp.Send(message);
                 } catch (Exception e) {
+                    Console.WriteLine("Mail sent to user");
                     Console.WriteLine(e.ToString());
                 }
             } else {
@@ -52,6 +53,7 @@ namespace WCF_Middleware {
                     smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                     smtp.Send(message);
                 } catch (Exception e) {
+                    Console.WriteLine("Mail sent to admin");
                     Console.WriteLine(e.ToString());
                 }
             }
