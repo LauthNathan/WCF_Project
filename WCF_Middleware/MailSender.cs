@@ -31,8 +31,9 @@ namespace WCF_Middleware {
                     smtp.Credentials = new NetworkCredential("developpeurcesi@outlook.fr", "Password420");
                     smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                     smtp.Send(message);
+                    dA.Cnn.Close();
                 } catch (Exception e) {
-                    Console.WriteLine("Mail sent to user");
+                    Console.WriteLine("Error sending mail sent to user");
                     Console.WriteLine(e.ToString());
                 }
             } else {
@@ -52,8 +53,9 @@ namespace WCF_Middleware {
                     smtp.Credentials = new NetworkCredential("developpeurcesir", "Password420");
                     smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                     smtp.Send(message);
+                    dA.Cnn.Close();
                 } catch (Exception e) {
-                    Console.WriteLine("Mail sent to admin");
+                    Console.WriteLine("Error sending mail sent to admin");
                     Console.WriteLine(e.ToString());
                 }
             }

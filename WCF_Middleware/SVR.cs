@@ -9,7 +9,8 @@ using WCF_Service;
 
 namespace WCF_Middleware {
     public class SVR : iSVR {
-        public static string tokkenApp = "#A`ut8kNX7t.%L%#Ierr3sBYi}`S=bXRK5.iWo[Reu>^|Km9fW+K!C%{Q}O&xU,";
+
+ 
         public CAM Cam { get; set; }
         public DataAccess dA { get; set; }
         public User User { get; set; }

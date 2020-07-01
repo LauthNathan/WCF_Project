@@ -10,30 +10,22 @@ using System.Threading;
 namespace WCF_Middleware {
     public class CAM {
 
-        private DataAccess dataAccess;
-        private MSG msg;
-        private SqlCommand cmd;
-        private string rq_sql;
-        
-
-        public DataAccess DataAccess { get => dataAccess; set => dataAccess = value; }
-        public MSG Msg { get => msg; set => msg = value; }
- 
-
-        public string path { get; set; }
-        public StreamWriter sw { get; set; }
+       
+        public DataAccess DataAccess { get ; set; }
+        public string Path { get; set; }
+        public StreamWriter Sw { get; set; }
         
 
         public CAM(DataAccess dA) {
             DataAccess = dA;
-            path = @"C:\Users\Vimaire\source\repos\WCF_Project\WCF_Server\log.txt";
+            Path = @"C:\Users\Vimaire\source\repos\WCF_Project\WCF_Server\log.txt";
             
         }
 
         public bool checkToken(MSG message) {
 
            
-                sw = File.AppendText(path);
+                Sw = File.AppendText(Path);
            
 
 
@@ -41,15 +33,15 @@ namespace WCF_Middleware {
             if (DataAccess.checkToken(message)) {
 
                 DateTime td = DateTime.Now;
-                sw.WriteLine(td.ToString() + " : L\'utilisateur " + DataAccess.getUsername(message) + " a effectué l\'opération " + message.operationName + " avec succès");
-                sw.Close();
+                Sw.WriteLine(td.ToString() + " : L\'utilisateur " + DataAccess.getUsername(message) + " a effectué l\'opération " + message.operationName + " avec succès");
+                Sw.Close();
                 return true;
 
             } else {
                 
                 DateTime td = DateTime.Now;
-                sw.WriteLine(td.ToString() + " : Un accès à l'opération " + message.operationName + " a été tenté sans autorisation");
-                sw.Close();
+                Sw.WriteLine(td.ToString() + " : Un accès à l'opération " + message.operationName + " a été tenté sans autorisation");
+                Sw.Close();
                 return false;
             }
         }
@@ -57,21 +49,21 @@ namespace WCF_Middleware {
         public bool checkAppToken(MSG message) {
 
             
-                sw = File.AppendText(path);
+                Sw = File.AppendText(Path);
             
 
             if (DataAccess.checkAppToken(message)) {
 
                 DateTime td = DateTime.Now;
-                sw.WriteLine(td.ToString() + " : L\'application possédant l\'app token " + message.tokenApp + " s'est connecté");
-                sw.Close();
+                Sw.WriteLine(td.ToString() + " : L\'application possédant l\'app token " + message.tokenApp + " s'est connecté");
+                Sw.Close();
                 return true;
 
             } else {
 
                 DateTime td = DateTime.Now;
-                sw.WriteLine(td.ToString() + " : L\'application possédant l\'app token " + message.tokenApp + " a essayé de se connecter sans succès");
-                sw.Close();
+                Sw.WriteLine(td.ToString() + " : L\'application possédant l\'app token " + message.tokenApp + " a essayé de se connecter sans succès");
+                Sw.Close();
                 return false;
             }
         }

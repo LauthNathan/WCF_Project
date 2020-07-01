@@ -8,19 +8,21 @@ using System.Data.SqlClient;
 namespace WCF_Middleware {
     public class DataAccess {
 
-        private MSG msg;
+        
         private string connectionString = null;
         private string Rq_sql { get; set; }
-
-        public MSG Msg { get => msg; set => msg = value; }
-
         public SqlConnection Cnn { get ; set; }
-        public SqlDataReader DataReader { get; set; }
-        public SqlCommand Cmd { get ; set ; }
+        private SqlDataReader DataReader { get; set; }
+        private SqlCommand Cmd { get ; set ; }
+        public string ConnectionString { get => connectionString; set => connectionString = value; }
 
         public DataAccess() {
-            connectionString = "Data Source=DESKTOP-500VV2V\\WCF_SQL_SERVER;Initial Catalog=wcf_bdd;Integrated Security=True;";
-            Cnn = new SqlConnection(connectionString);
+            connectDB();
+        }
+
+        private void connectDB() {
+            ConnectionString = "Data Source=DESKTOP-500VV2V\\WCF_SQL_SERVER;Initial Catalog=wcf_bdd;Integrated Security=True;";
+            Cnn = new SqlConnection(ConnectionString);
             try {
                 Cnn.Open();
                 Console.WriteLine("Connection Open ! ");
@@ -31,7 +33,26 @@ namespace WCF_Middleware {
             }
         }
 
-       
+        public string authenticate(string username, string pswd) {
+            Rq_sql = "SELECT tokenUser FROM users WHERE username = '" + username + "' AND password = '" + pswd + "';";
+            Cmd = new SqlCommand(Rq_sql, Cnn);
+            DataReader = Cmd.ExecuteReader();
+            string response;
+
+            if (DataReader.Read()) {
+
+                response = DataReader.GetString(0);
+                DataReader.Close();
+                Cmd.Dispose();
+                return response;
+
+            } else {
+                Console.WriteLine("Wrong credentials");
+                DataReader.Close();
+                Cmd.Dispose();
+                return null;
+            }
+        }
 
         public string getMail(string usertoken) {
             string Rq_sql = "SELECT email FROM users WHERE tokenUser = '" + usertoken + "';";

@@ -7,13 +7,9 @@ using System.Security.Cryptography;
 
 namespace WCF_Middleware {
     public class User {
-        private MSG msg;
-        private string username;
-        private Authentifier auth;
-
-        public MSG Msg { get => msg; set => msg = value; }
-        public string Username { get => username; set => username = value; }
-        public Authentifier Auth { get => auth; set => auth = value; }
+    
+        public string Username { get ; set ; }
+        public Authentifier Auth { get; set ; }
 
         public User(Authentifier auth) {
             Auth = auth;
@@ -38,10 +34,7 @@ namespace WCF_Middleware {
             }
         }
 
-        public MSG logout() {
-            return new MSG();
-        }
-        static string GetMd5Hash(MD5 md5Hash, string input) {
+        private static string GetMd5Hash(MD5 md5Hash, string input) {
             // Convert the input string to a byte array and compute the hash.
             byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
             // Create a new Stringbuilder to collect the bytes
