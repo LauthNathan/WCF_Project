@@ -7,6 +7,8 @@ namespace WCF_Service {
     public interface iSVR {
         [OperationContract]
         MSG m_service(MSG message);
+
+        
     }
 
     public struct MSG {

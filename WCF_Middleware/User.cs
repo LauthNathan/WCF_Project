@@ -27,6 +27,7 @@ namespace WCF_Middleware {
                     message.tokenUser = tokenUser;
                     message.statut_Op = true;
                     Username = message.data[0].ToString();
+                    Console.WriteLine("User logged in");
                     return message;
                 }
                 message.statut_Op = false;
